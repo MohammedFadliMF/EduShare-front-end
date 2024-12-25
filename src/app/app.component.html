@@ -1,1 +1,20 @@
-<h1>{{title}}</h1>
+<!-- <div class="min-h-screen ">
+  <app-header></app-header>
+  <div class="flex">
+    <app-sidebar></app-sidebar>
+    <main >
+      <app-course-grid></app-course-grid>
+      <app-course-grid></app-course-grid>
+      <app-course-grid></app-course-grid>
+    </main>
+  </div>
+</div> -->
+<div class="flex flex-col h-screen overflow-hidden">
+  <app-header></app-header>
+  <div class="flex overflow-auto">
+    <app-sidebar></app-sidebar>
+    <main class="flex-1 px-10 py-4 overflow-auto">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

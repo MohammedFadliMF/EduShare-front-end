@@ -2,3 +2,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Import Google Sans Font */
+
+body {
+  font-family: 'Google Sans';
+  margin: 0;
+  padding: 0;
+}
