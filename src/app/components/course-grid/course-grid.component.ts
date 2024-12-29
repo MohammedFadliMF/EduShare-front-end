@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,7 +9,7 @@ import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-course-grid',
   standalone: true,
-  imports: [MatCardModule, MatIconModule, MatButtonModule, NgFor],
+  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule, NgFor],
   templateUrl: './course-grid.component.html',
   styleUrl: './course-grid.component.css',
 })

@@ -10,7 +10,7 @@ mat-sidenav {
   border-right: 1px solid #e0e0e0;
 }
 
-mat-list-item {
+mat-list-item  ,mat-expansion-panel-header div{
   font-family: "Google Sans", serif;
   font-style: normal;
   font-weight: 400;
@@ -22,6 +22,7 @@ mat-list-item {
   align-items: center;
   color: #333333;
   transition: background-color 0.2s ease;
+  cursor: pointer;
 }
 
 mat-list-item:hover {
@@ -33,12 +34,13 @@ mat-list-item.active {
   color: #1a73e8; /* Blue text */
 }
 
-mat-icon {
-  /* margin-right: 12px; */
-  /* color: #757575; Default icon color */
-}
+/* mat-expansion-panel {
+  border: none !important;
+  box-shadow: none;
+} */
 
-mat-list-item h4 {
+
+mat-list-item h4,h4 {
   flex-grow: 1;
 }
 .st {

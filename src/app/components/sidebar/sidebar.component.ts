@@ -1,31 +1,27 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-
+import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav'; 
 import { MatListModule } from '@angular/material/list'; 
 import { MatIconModule } from '@angular/material/icon';
 import { NgFor } from '@angular/common';
-import { RouterModule } from '@angular/router'; // Import RouterModule
+import { RouterModule } from '@angular/router'; 
+import { MatExpansionModule } from '@angular/material/expansion';
 
-// import { MatExpansionModule } from '@angular/material/expansion';
-
-// import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [
+    CommonModule,
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
     NgFor,
     RouterModule,
-    // MatExpansionModule,
-    // MatToolbarModule,
-
-    // MatDividerModule,
+    MatExpansionModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './sidebar.component.html',
