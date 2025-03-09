@@ -16,51 +16,26 @@ import { NgFor } from '@angular/common';
 export class CourseGridComponent {
   courses: Course[] = [
     {
-      title: 'Sample Title 1',
-      subtitle: 'Sample Subtitle 1',
-      instructor: 'Instructor 1',
-      initial: 'A',
-      color: 'bg-blue-500',
+      id: 1,
+      title: 'Développement avancés des SI',
+      field: 'Master Ingénierie des Système Inte...',
+      icon: 'D',
+      color: '',
     },
     {
-      title: 'Sample Title 2',
-      subtitle: 'Sample Subtitle 2',
-      instructor: 'Instructor 2',
-      initial: 'B',
-      color: 'bg-green-500',
+      id: 2,
+      title: 'DWFS avec Javascript',
+      field: 'Master ISI',
+      icon: 'D',
+      color: '',
     },
     {
-      title: 'Sample Title 3',
-      subtitle: 'Sample Subtitle 3',
-      instructor: 'Instructor 3',
-      initial: 'C',
-      color: 'bg-green-500',
-    },
-    {
-      title: 'Sample Title 4',
-      subtitle: 'Sample Subtitle 4',
-      instructor: 'Instructor 4',
-      initial: 'D',
-      color: 'bg-green-500',
-    },
-    {
-      title: 'Sample Title 5',
-      subtitle: 'Sample Subtitle 5',
-      instructor: 'Instructor 5',
-      initial: 'E',
-      color: 'bg-green-500',
-    },
-    {
-      title: 'Sample Title 6',
-      subtitle: 'Sample Subtitle 6',
-      instructor: 'Instructor 6',
-      initial: 'F',
-      color: 'bg-green-500',
+      id: 3,
+      title: 'Structures de données avancées',
+      field: 'SKASMI',
+      icon: 'S',
+      color: '',
     },
   ];
-  title = 'Sample Title';
-  subtitle = 'Sample Subtitle';
-  instructor = 'Instructor Name';
-  initial = 'A'; // Avatar initial
-  color = 'bg-blue-500'; // Example color cla
+ 
 }

@@ -1,0 +1,37 @@
+.border-2 {
+  border-width: 2px;
+}
+.border-green-600 {
+  border-color: #16a34a;
+}
+.bg-green-600 {
+  background-color: #16a34a !important;
+  color: white !important;
+}
+.hover\:border-green-600:hover {
+  border-color: #16a34a;
+}
+.hover\:bg-green-700:hover {
+  background-color: #15803d !important;
+  /* color: black !important; */
+
+}
+mat-card {
+  /* border-bottom: none !important; */
+  border: 1px solid #e5e7eb;
+  box-shadow: none !important;
+}
+mat-toolbar {
+  top: 0;
+  position: sticky;
+  z-index: 50;
+  background-color: white;
+  /* border-bottom: 1px solid #e5e7eb; */
+  box-shadow: none !important;
+  height: 46px !important;
+  font-weight: 300; /* Font weight */
+  color: rgb(32, 33, 36); /* Font color */
+  font-size: 10px !important; /* Font size */
+  line-height: 12px !important; /* Line height */
+  font-family: "Google Sans";
+}

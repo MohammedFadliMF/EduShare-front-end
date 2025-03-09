@@ -1,7 +1,7 @@
 export interface Course {
+  id:number;
   title: string;
-  subtitle: string;
-  instructor: string;
-  initial: string; // Avatar initial
-  color: string; // CSS class for background color
+  field: string;
+  icon?: string;
+  color?: string; // CSS class for background color
 }

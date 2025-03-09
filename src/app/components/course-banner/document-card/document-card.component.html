@@ -1,0 +1,31 @@
+<mat-card class="doc overflow-hidden transition-shadow hover:shadow-sm">
+  <a *ngIf="document?.isLink; else noLink" href="#" class="block">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+  <ng-template #noLink>
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </ng-template>
+</mat-card>
+
+<ng-template #content>
+  <div class=" flex items-center gap-4 p-3">
+    <div class="relative w-24 h-27 flex-shrink-0 bg-gray-50 rounded-sm overflow-hidden">
+      <img
+        [src]="document?.previewUrl"
+        [alt]="'Preview of ' + document?.title"
+        class="object-cover w-full h-full"
+      />
+    </div>
+    <div class="py-1 flex flex-col">
+      <h3
+        [ngClass]="{
+          'font-normal text-sm truncate text-blue-600': document?.isLink,
+          'font-normal text-sm truncate text-gray-900': !document?.isLink
+        }"
+      >
+        {{ document?.title }}
+      </h3>
+      <p class="text-sm text-gray-500 mt-1">{{ document?.type }}</p>
+    </div>
+  </div>
+</ng-template>

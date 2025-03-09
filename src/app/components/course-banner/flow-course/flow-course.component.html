@@ -1,0 +1,57 @@
+<!-- Header Banner  -->
+<div class="bg-emerald-600 text-white rounded-lg overflow-hidden mb-6">
+  <div class="relative h-48">
+    <div class="absolute inset-0">
+      <img src="assets/pic.jpg" alt="" class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-emerald-600/90"></div>
+    </div>
+    <div class="relative z-10 p-6">
+      <h1 class="text-3xl font-bold mb-2">
+        Développement avancés des bases de données
+      </h1>
+      <p class="text-emerald-50">
+        Master Ingénierie des Système Intelligents (ISI)
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-[300px,1fr] gap-6">
+  <aside>
+    <!-- <UpcomingCard /> -->
+    <mat-card class="mb-6">
+      <mat-card-content class="p-4">
+        <h2 class="font-semibold mb-2">À venir</h2>
+        <p class="text-gray-600 text-sm mb-4">
+          Génial, aucun devoir à remettre dans les jours qui viennent !
+        </p>
+        <button mat-button color="primary" class="text-blue-600 p-0 h-auto">
+          Tout afficher
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </aside>
+  <main>
+    <!-- <PostInput /> -->
+    <mat-card class="mb-6">
+      <mat-card-content class="p-4">
+        <div class="d-flex align-items-center gap-3">
+          <mat-icon
+            class="h-8 w-8 rounded-full"
+            style="font-size: 2rem; background-color: #ddd; color: #fff"
+            >face</mat-icon
+          >
+          <input
+            matInput
+            placeholder="Annoncez quelque chose à votre classe"
+            class="flex-1 bg-transparent text-sm text-gray-600 placeholder:text-gray-400 focus:outline-none"
+          />
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- <TeacherPost /> -->
+     <app-course-chapter-list></app-course-chapter-list>
+    <!-- <CourseMaterialsPost /> -->
+  </main>
+</div>

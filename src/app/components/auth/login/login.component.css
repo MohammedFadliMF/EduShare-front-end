@@ -1,0 +1,54 @@
+.w-full {
+  width: 100%;
+}
+.max-w-md {
+  max-width: 28rem;
+}
+.mx-auto {
+  margin: 0 auto;
+}
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+.text-center {
+  text-align: center;
+}
+.text-xs {
+  font-size: 0.75rem;
+}
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+/* 
+.google-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-items:flex-start ;
+  padding: 1px 2px;
+  height: 32px;
+  background-color: #4285f4;
+  color: white;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.google-btn:hover {
+  background-color: #1465e6;
+} */
+
+
+button {
+  border: 1px solid #e5e7eb;
+  box-shadow: none !important;
+}
+mat-card {
+  box-shadow: none !important;
+    border: 1px solid #e5e7eb;
+}
+/* not applicable  */
+form button.mat-raised-button{
+background-color: #4285f4 !important;
+color: white !important;
+}

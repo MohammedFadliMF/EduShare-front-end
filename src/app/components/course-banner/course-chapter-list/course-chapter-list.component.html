@@ -1,0 +1,126 @@
+<div class="space-y-6">
+  <mat-card class="bg-white ">
+    <mat-card-content class="p-0">
+      <!-- Header Section -->
+      <div class="p-4 flex items-center justify-between border-b">
+        <div class="flex items-center gap-3">
+          <mat-icon class="h-10 w-10 bg-emerald-100 text-emerald-600 uppercase">
+            r
+          </mat-icon>
+          <div>
+            <h3 class="text-gray-900">rachid dehbi</h3>
+            <p class="text-sm text-gray-500">25 oct.</p>
+          </div>
+        </div>
+        <mat-menu #menu="matMenu" class="w-48">
+          <button mat-menu-item>Modifier</button>
+          <button mat-menu-item class="text-red-600">Supprimer</button>
+        </mat-menu>
+        <button
+          mat-icon-button
+          aria-label="Plus d'options"
+          [matMenuTriggerFor]="menu"
+          class="text-gray-500 hover:text-gray-900"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+  
+      <!-- Content Section -->
+      <div class="p-4">
+        <h4 class="font-medium text-gray-900 mb-4">TP PL/SQL avancé</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ng-container *ngFor="let doc of documents; let index = index">
+            <app-document-card [document]="doc"></app-document-card>
+          </ng-container>
+        </div>
+      </div>
+  
+      <!-- Comment Input -->
+      <div
+        class="flex items-center gap-3 px-4 py-3 bg-white rounded-lg border mt-4"
+      >
+        <mat-icon class="h-8 w-8 shrink-0">account_circle</mat-icon>
+  
+        <div class="flex-1 flex items-center">
+          <input
+            type="text"
+            placeholder="Ajouter un commentaire au cours..."
+            class="w-full bg-transparent text-sm text-gray-600 placeholder:text-gray-400 focus:outline-none"
+          />
+        </div>
+  
+        <button
+          mat-icon-button
+          color="primary"
+          class="text-gray-400 hover:text-gray-600 shrink-0"
+          aria-label="Envoyer le commentaire"
+        >
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="bg-white ">
+    <mat-card-content class="p-0">
+      <!-- Header Section -->
+      <div class="p-4 flex items-center justify-between border-b">
+        <div class="flex items-center gap-3">
+          <mat-icon class="h-10 w-10 bg-emerald-100 text-emerald-600 uppercase">
+            r
+          </mat-icon>
+          <div>
+            <h3 class="text-gray-900">rachid dehbi</h3>
+            <p class="text-sm text-gray-500">25 oct.</p>
+          </div>
+        </div>
+        <mat-menu #menu="matMenu" class="w-48">
+          <button mat-menu-item>Modifier</button>
+          <button mat-menu-item class="text-red-600">Supprimer</button>
+        </mat-menu>
+        <button
+          mat-icon-button
+          aria-label="Plus d'options"
+          [matMenuTriggerFor]="menu"
+          class="text-gray-500 hover:text-gray-900"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+  
+      <!-- Content Section -->
+      <div class="p-4">
+        <h4 class="font-medium text-gray-900 mb-4">TP PL/SQL avancé</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ng-container *ngFor="let doc of documents; let index = index">
+            <app-document-card [document]="doc"></app-document-card>
+          </ng-container>
+        </div>
+      </div>
+  
+      <!-- Comment Input -->
+      <div
+        class="flex items-center gap-3 px-4 py-3 bg-white rounded-lg border mt-4"
+      >
+        <mat-icon class="h-8 w-8 shrink-0">account_circle</mat-icon>
+  
+        <div class="flex-1 flex items-center">
+          <input
+            type="text"
+            placeholder="Ajouter un commentaire au cours..."
+            class="w-full bg-transparent text-sm text-gray-600 placeholder:text-gray-400 focus:outline-none"
+          />
+        </div>
+  
+        <button
+          mat-icon-button
+          color="primary"
+          class="text-gray-400 hover:text-gray-600 shrink-0"
+          aria-label="Envoyer le commentaire"
+        >
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

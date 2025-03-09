@@ -1,0 +1,67 @@
+<div class="mx-auto max-w-2xl">
+  <h1 class="mb-8 text-center text-4xl font-normal">
+    Join as a professor or student
+  </h1>
+
+  <div class="mb-6 grid gap-4 md:grid-cols-2">
+    <mat-card
+      class="cursor-pointer p-6 transition-all"
+      [ngClass]="{
+        'border-2 border-green-600': selected === 'professor',
+        'hover:border-green-600': true
+      }"
+      (click)="selectOption('professor')"
+    >
+      <div class="flex items-start justify-between">
+        <mat-icon class="h-6 w-6">work</mat-icon>
+        <div
+          *ngIf="selected === 'professor'"
+          class="h-4 w-4 rounded-full bg-green-600"
+        ></div>
+      </div>
+      <h2 class="mt-4 text-xl font-semibold">
+        I'm a professor, sharing courses and assignments with students
+      </h2>
+    </mat-card>
+
+    <mat-card
+      class="cursor-pointer p-6 transition-all"
+      [ngClass]="{
+        'border-2 border-green-600': selected === 'student',
+        'hover:border-green-600': true
+      }"
+      (click)="selectOption('student')"
+    >
+      <div class="flex items-start justify-between">
+        <mat-icon class="h-6 w-6">person</mat-icon>
+        <div
+          *ngIf="selected === 'student'"
+          class="h-4 w-4 rounded-full bg-green-600"
+        ></div>
+      </div>
+      <h2 class="mt-4 text-xl font-semibold">
+        I'm a student, learning and completing assignments
+      </h2>
+    </mat-card>
+  </div>
+
+  <div class="flex flex-col items-center gap-4">
+    <button
+      mat-raised-button
+      class="w-full max-w-[200px] bg-green-600 transition-all hover:bg-green-700"
+      [routerLink]="
+        selected === 'professor' ? '/auth/professor' : '/auth/student'
+      "
+    >
+      {{
+        selected === "professor" ? "Join as a Professor" : "Join as a Student"
+      }}
+    </button>
+    <p class="text-sm text-gray-600">
+      Already have an account?
+      <a routerLink="/auth/login" class="text-green-600 hover:underline"
+        >Log In</a
+      >
+    </p>
+  </div>
+</div>

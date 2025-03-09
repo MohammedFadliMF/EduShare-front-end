@@ -1,0 +1,93 @@
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.transition-shadow {
+  transition: box-shadow 0.3s;
+}
+
+.hover\:shadow-sm:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.block {
+  display: block;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-24 {
+  width: 6rem; /* 24 * 0.25rem */
+}
+
+.h-32 {
+  height: 8rem; /* 32 * 0.25rem */
+}
+
+.flex {
+  display: flex;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.gap-4 {
+  gap: 1rem; /* 4 * 0.25rem */
+}
+
+.p-3 {
+  padding: 0.75rem; /* 3 * 0.25rem */
+}
+
+.bg-gray-50 {
+  background-color: #f9fafb;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-gray-900 {
+  color: #1f2937;
+}
+
+.text-blue-600 {
+  color: #2563eb;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+.doc{
+  /* border-bottom: none !important; */
+  border: 1px solid #e5e7eb;
+  box-shadow: none !important; 
+}

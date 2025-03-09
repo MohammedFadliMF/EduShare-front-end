@@ -1,0 +1,23 @@
+.border-2 {
+  border-width: 2px;
+}
+.border-green-600 {
+  border-color: #16a34a;
+}
+.bg-green-600 {
+  background-color: #16a34a !important;
+  color: white !important;
+}
+.hover\:border-green-600:hover {
+  border-color: #16a34a;
+}
+.hover\:bg-green-700:hover {
+  background-color: #15803d !important;
+  /* color: black !important; */
+
+}
+mat-card {
+  /* border-bottom: none !important; */
+  border: 1px solid #e5e7eb;
+  box-shadow: none !important;
+}

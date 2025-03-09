@@ -5,9 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.component';
 @Component({
-  selector: 'app-root',
+  selector: 'app-main-page',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -16,11 +16,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
+    CustomSidenavComponent,
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: './main-page.component.html',
+  styleUrl: './main-page.component.css',
 })
-export class AppComponent {
+export class MainPageComponent {
   collapsed = signal(false);
   sidenavWidth = computed(() => (this.collapsed() ? '65px' : '250px'));
 }
