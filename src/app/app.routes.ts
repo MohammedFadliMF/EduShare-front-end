@@ -15,10 +15,10 @@ import { AsStudentComponent } from './components/auth/sign-up/as-student/as-stud
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AuthPageComponent } from './components/auth/auth-page/auth-page.component';
 import { LoginComponent } from './components/auth/login/login.component';
-
+import { authenticationGuard } from './guards/authentication.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/sign-up', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'auth',
     component: AuthPageComponent,
@@ -30,30 +30,37 @@ export const routes: Routes = [
       { path: 'login', component: LoginComponent },
     ],
   },
-  { path: 'home', component: MainPageComponent },
-  { path: 'accueil', component: CourseGridComponent },
-  { path: 'agenda', component: AgendaComponent },
-  { path: 'inscrit', component: ContentComponent },
-  { path: 'todo', component: TodoComponent },
-  { path: 'archived-courses', component: ArchivedCoursesComponent },
-  { path: 'settings', component: SettingComponent },
 
   {
-    path: 'content',
-    component: ContentComponent,
+    path: 'home',
+    component: MainPageComponent,
+    canActivate: [authenticationGuard],
     children: [
+      { path: '', redirectTo: 'accueil', pathMatch: 'full' }, // Default child route
+      { path: 'accueil', component: CourseGridComponent },
+      { path: 'agenda', component: AgendaComponent },
       {
-        path: '1',
-        component: PageComponent,
+        path: 'inscrit',
+        component: ContentComponent,
         children: [
-          { path: 'flow-course', component: FlowCourseComponent },
-          { path: 'homework', component: HomeworkComponent },
-          { path: 'personnes', component: PersonnesComponent },
+          {
+            path: '1',
+            component: PageComponent,
+            children: [
+              { path: 'flow-course', component: FlowCourseComponent },
+              { path: 'homework', component: HomeworkComponent },
+              { path: 'personnes', component: PersonnesComponent },
+            ],
+          },
+          // { path: '2', component: PageComponent },
+          // { path: '3', component: PageComponent },
         ],
       },
-      { path: '2', component: PageComponent },
-      { path: '3', component: PageComponent },
+      { path: 'todo', component: TodoComponent },
+      { path: 'archived-courses', component: ArchivedCoursesComponent },
+      { path: 'settings', component: SettingComponent },
     ],
   },
-  { path: '**', redirectTo: '/accueil' }, // Wildcard route for a 404 page
+
+  { path: '**', redirectTo: '/home' }, // Wildcard route for a 404 page
 ];

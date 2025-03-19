@@ -21,6 +21,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  collapsed = signal(false);
-  sidenavWidth = computed(() => (this.collapsed() ? '65px' : '250px'));
+  /**
+   * collapsed = signal(false);
+   * sidenavWidth = computed(() => (this.collapsed() ? '65px' : '250px'));
+   */
 }

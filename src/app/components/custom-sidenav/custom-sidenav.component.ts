@@ -4,7 +4,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
-import { Course } from '../../interfaces/course';
+import { Course } from '../../models/course';
 
 export type MenuItem = {
   icon: string;
