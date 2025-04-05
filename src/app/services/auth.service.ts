@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {jwtDecode} from 'jwt-decode';
 import { Teacher } from '../models/teacher';
 import { Student } from '../models/student';
-import { catchError, Observable, throwError } from 'rxjs';
+import {catchError, map, Observable, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +60,11 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
+  public getUserRole(): Observable<string[]> {
+    return this.http.get<{ roles: string[] }>('http://localhost:8085/auth/me',{withCredentials:true}).pipe(
+      map(res => res.roles)
+    );
+  }
   //Global Error Handling
   private handleError(error: HttpErrorResponse) {
     let errorMsg = 'An unknown error occurred';

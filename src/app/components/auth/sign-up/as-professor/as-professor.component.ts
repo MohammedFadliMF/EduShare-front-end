@@ -68,7 +68,7 @@ export class AsProfessorComponent implements OnInit {
     };
     this.authService.registerTeacher(this.teacher).subscribe({
       next: (data) => {
-        this.authService.loadProfile(data);
+        //this.authService.loadProfile(data);
         this.router.navigateByUrl('/home');
       },
       error: (error) => {

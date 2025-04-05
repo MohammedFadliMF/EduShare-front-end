@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
 
      this.authService.login(email, password).subscribe({
        next: (data) => {
-        this.authService.loadProfile(data);
+        //this.authService.loadProfile(data);
         this.router.navigateByUrl('/home');
        },
        error: (err) => {
