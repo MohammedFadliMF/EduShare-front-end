@@ -4,7 +4,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet ,RouterLink, RouterLinkActive} from '@angular/router';
@@ -24,7 +23,6 @@ import { RouterOutlet ,RouterLink, RouterLinkActive} from '@angular/router';
     MatToolbarModule,
     FormsModule,
     MatTabsModule,
-    NgFor,
   ],
   templateUrl: './page.component.html',
   styleUrl: './page.component.css',

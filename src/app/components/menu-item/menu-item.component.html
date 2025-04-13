@@ -14,7 +14,7 @@
   >
   @if (!collapsed()) {
   <span matListItemTitle>{{ item().label }}</span>
-  } @if (item().courses) {
+  } @if (item().classrooms) {
   <span matListItemMeta>
     @if (nestedMenuOpen()) {
     <mat-icon>expand_less</mat-icon>
@@ -25,14 +25,14 @@
   }
 </a>
 <!-- courses -->
-@if (item().courses && nestedMenuOpen()) {
+@if (item().classrooms && nestedMenuOpen()) {
 <div @expandContractMenu>
-  @for (subItem of item().courses; track subItem.title) {
+  @for (subItem of item().classrooms; track subItem.classroomId) {
   <a
     mat-list-item
     class="menu-item"
     [class.indented]="!collapsed()"
-    [routerLink]="'content/' + subItem.id"
+    [routerLink]="'c/' + subItem.classroomId"
     routerLinkActive
     #rla="routerLinkActive"
     [activated]="rla.isActive"
@@ -40,10 +40,10 @@
     <mat-icon
       [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
       matListItemIcon
-      >{{ subItem.icon }}</mat-icon
+      >{{ subItem.coursesName.charAt(0) }}</mat-icon
     >
     @if (!collapsed()) {
-    <span matListItemTitle>{{ subItem.title }}</span>
+    <span matListItemTitle>{{ subItem.coursesName}}</span>
     } 
   </a>
   }

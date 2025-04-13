@@ -68,7 +68,7 @@ export class AsStudentComponent implements OnInit {
     this.authService.registerStudent(this.student).subscribe({
       next: (data) => {
         //this.authService.loadProfile(data);
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/u/1');
       },
       error: (error) => {
         console.log(error.message);

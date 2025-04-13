@@ -20,9 +20,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './choose-user-type.component.css',
 })
 export class ChooseUserTypeComponent {
-  selected: 'professor' | 'student' = 'professor';
+  selected: 'teacher' | 'student' = 'teacher';
 
-  selectOption(option: 'professor' | 'student') {
+  selectOption(option: 'teacher' | 'student') {
     this.selected = option;
   }
 }

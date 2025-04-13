@@ -29,8 +29,9 @@ export class MenuItemComponent {
 
   collapsed = input(false);
   nestedMenuOpen = signal(false);
+  
   toggleNested() {
-    if (!this.item().courses) {
+    if (!this.item().classrooms) {
       return;
     }
     this.nestedMenuOpen.set(!this.nestedMenuOpen());

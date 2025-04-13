@@ -1,5 +1,5 @@
 .custom-card {
   border: 0.1px solid #e9ebeb; /* Apply a grand border with a desired color */
   border-radius: 10px; /* Rounded corners for the entire card */
-   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);/* Optional: Add shadow to make it stand out */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);/* Optional: Add shadow to make it stand out */
 }

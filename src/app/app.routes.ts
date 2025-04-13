@@ -16,51 +16,76 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { AuthPageComponent } from './components/auth/auth-page/auth-page.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { authenticationGuard } from './guards/authentication.guard';
+import { TeacherDashboardComponent } from './components/teacher/teacher-dashboard/teacher-dashboard.component';
+import { TaughtCourseItemComponent } from './components/teacher/taught-course-item/taught-course-item.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'u/1', pathMatch: 'full' },
   {
     path: 'auth',
     component: AuthPageComponent,
     children: [
       { path: '', redirectTo: 'choose-user-type', pathMatch: 'full' }, // Default child route
       { path: 'choose-user-type', component: ChooseUserTypeComponent },
-      { path: 'professor', component: AsProfessorComponent },
+      { path: 'teacher', component: AsProfessorComponent },
       { path: 'student', component: AsStudentComponent },
       { path: 'login', component: LoginComponent },
     ],
   },
 
   {
-    path: 'home',
+    path: 'u/1',
     component: MainPageComponent,
     canActivate: [authenticationGuard],
     children: [
-      { path: '', redirectTo: 'accueil', pathMatch: 'full' }, // Default child route
-      { path: 'accueil', component: CourseGridComponent },
-      { path: 'agenda', component: AgendaComponent },
+      { path: '', redirectTo: 'h', pathMatch: 'full' }, // Default child route
+      { path: 'h', component: CourseGridComponent },
+      { path: 'a', component: AgendaComponent },
+      { path: 'todo', component: TodoComponent },
       {
-        path: 'inscrit',
+        path: 'c',
         component: ContentComponent,
         children: [
           {
-            path: '1',
+            path: ':courseId',
             component: PageComponent,
             children: [
-              { path: 'flow-course', component: FlowCourseComponent },
-              { path: 'homework', component: HomeworkComponent },
-              { path: 'personnes', component: PersonnesComponent },
+              { path: '', component: FlowCourseComponent },
+              { path: 't/all', component: HomeworkComponent },
+              { path: 'p', component: PersonnesComponent },
             ],
           },
-          // { path: '2', component: PageComponent },
-          // { path: '3', component: PageComponent },
         ],
       },
+      { path: 'archived', component: ArchivedCoursesComponent },
+      { path: 's', component: SettingComponent },
+    ],
+  },
+  {
+    path: 'u/2',
+    component: TeacherDashboardComponent,
+    children: [
+      { path: '', redirectTo: 'h', pathMatch: 'full' },
+      { path: 'h', component: CourseGridComponent },
+      { path: 'a', component: AgendaComponent },
       { path: 'todo', component: TodoComponent },
-      { path: 'archived-courses', component: ArchivedCoursesComponent },
-      { path: 'settings', component: SettingComponent },
+      {
+        path: 'c',
+        component: ContentComponent,
+        children: [
+          {
+            path: ':courseId',
+            component: TaughtCourseItemComponent,
+            children: [
+              { path: '', component: FlowCourseComponent },
+              { path: 't/all', component: HomeworkComponent },
+              { path: 'p', component: PersonnesComponent },
+            ],
+          },
+        ],
+      },
     ],
   },
 
-  { path: '**', redirectTo: '/home' }, // Wildcard route for a 404 page
+  // { path: '**', redirectTo: 'u/1' }, // Wildcard route for a 404 page
 ];

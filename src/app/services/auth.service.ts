@@ -1,22 +1,37 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import {jwtDecode} from 'jwt-decode';
 import { Teacher } from '../models/teacher';
 import { Student } from '../models/student';
-import {catchError, map, Observable, throwError} from 'rxjs';
+import {BehaviorSubject, catchError, map, Observable, throwError} from 'rxjs';
+import { ClassRoom } from '../models/classroom';
+import { ClassRoomDto } from '../models/ClassRoomDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  classrooms = signal<ClassRoom[]>([]);
+
   email!: string;
   isAuthenticated: boolean = false;
   roles: any;
   accessToken!: string;
 
+  private dataSource = new BehaviorSubject<any>(null);
+  classrooms$ = this.dataSource.asObservable();
+
   constructor(private http: HttpClient, private router: Router) {}
 
+  sendClassrooms(data: any) {
+    this.dataSource.next(data);
+  }
+
+  getClassrooms() {
+    return this.http.get<ClassRoomDto[]>(
+      'http://localhost:8085/api/auth/classrooms',);
+  } 
   public login(email: string, password: string) {
     let options = {
       headers: new HttpHeaders().set(
@@ -28,7 +43,11 @@ export class AuthService {
       .set('username', email)
       .set('password', password);
 
-    return this.http.post('http://localhost:8085/auth/login', params, options);
+    return this.http.post(
+      'http://localhost:8085/api/auth/login',
+      params,
+      options
+    );
   }
 
   loadProfile(data: any) {
@@ -46,7 +65,7 @@ export class AuthService {
     };
 
     return this.http
-      .post('http://localhost:8085/auth/register/teacher', teacher, options)
+      .post('http://localhost:8085/api/auth/register/teacher', teacher, options)
       .pipe(catchError(this.handleError));
   }
 
@@ -56,14 +75,16 @@ export class AuthService {
     };
 
     return this.http
-      .post('http://localhost:8085/auth/register/student', student, options)
+      .post('http://localhost:8085/api/auth/register/student', student, options)
       .pipe(catchError(this.handleError));
   }
 
   public getUserRole(): Observable<string[]> {
-    return this.http.get<{ roles: string[] }>('http://localhost:8085/auth/me',{withCredentials:true}).pipe(
-      map(res => res.roles)
-    );
+    return this.http
+      .get<{ roles: string[] }>('http://localhost:8085/api/auth/profile', {
+        withCredentials: true,
+      })
+      .pipe(map((res) => res.roles));
   }
   //Global Error Handling
   private handleError(error: HttpErrorResponse) {
@@ -83,6 +104,8 @@ export class AuthService {
       errorMsg = 'Resource not found';
     } else if (error.status === 500) {
       errorMsg = 'Server error. Please try again later.';
+    } else if (error.error instanceof ErrorEvent) {
+      errorMsg = 'Network error. Please check your connection.';
     }
 
     return throwError(() => new Error(errorMsg));

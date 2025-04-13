@@ -11,12 +11,12 @@ export const authenticationGuard: CanActivateFn = (route, state) => {
     map(roles => {
       console.log("roles"+roles);
       // Check if the user has the "SCOPE_STUDENT" role
-      if (roles.includes("SCOPE_STUDENT")) {
+      if (roles.includes("STUDENT")) {
         return true; // Allow access to the route
       }
       // Check if the user has the "SCOPE_TEACHER" role
-      else if (roles.includes("SCOPE_TEACHER")) {
-        router.navigateByUrl('/pannel'); // Redirect to the teacher panel
+      else if (roles.includes("TEACHER")) {
+        router.navigateByUrl('/u/2'); // Redirect to the teacher Dashboard
         return false; // Deny access to the route
       }
       // If the user doesn't have either role, redirect to a default route (e.g., home)

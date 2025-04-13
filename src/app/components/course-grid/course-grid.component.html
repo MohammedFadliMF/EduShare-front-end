@@ -1,30 +1,40 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" >
-  <ng-container *ngFor="let course of courses;">
-    <mat-card  class="custom-card overflow-hidden" appearance="outlined" routerLink="coure-banner">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-4">
+  <ng-container *ngFor="let c of classrooms">
+    <mat-card
+      class="custom-card overflow-hidden w-[310px]"
+      appearance="outlined"
+      routerLink="coure-banner"
+    >
       <div class="bg-blue-500 p-4 relative h-27 rounded-t-md">
         <div class="text-white">
-          <h2 class="text-xl font-medium truncate">{{ course.title }}</h2>
-          <p class="text-sm opacity-90">{{ course.field }}</p>
-          <p class="text-sm opacity-90">{{ course.icon }}</p>
+          <h2 class="text-xl font-medium truncate">
+            {{ c.coursesName }}
+          </h2>
+          <p class="text-sm opacity-90">{{ c.section }}</p>
+          @if (c.createdBy){
+            <p class="text-sm opacity-90">{{ c.createdBy }}</p>
+          }
         </div>
-        <div
-          class="bg-blue-500 absolute -bottom-6 right-6 w-14 h-14 border-4 border-white rounded-full flex items-center justify-center"
+        @if (c.createdBy){
+          <div
+            class="bg-blue-500 absolute -bottom-6 right-6 w-14 h-14 border-4 border-white rounded-full flex items-center justify-center"
           >
-          <!-- [ngClass]="course.color" -->
-          <img
-            class="rounded-full w-12 h-12"
-            src="https://cdn.pixabay.com/photo/2018/06/27/07/45/college-student-3500990_640.jpg"
-            alt="Avatar"
-          />
-        </div>
+            <!-- Profile of the teacher or the first letter of their username -->
+            <span class="rounded-full w-12 h-12" alt="Avatar">
+              {{ c.createdBy.charAt(0) }}
+            </span>
+          </div>
+        }
       </div>
-      <mat-card-footer class="flex justify-end gap-2 py-3">
-        <button mat-icon-button class="hover:bg-gray-100 rounded-full">
-          <mat-icon>group</mat-icon> <!-- Use a suitable Material Icon -->
-        </button>
-        <button mat-icon-button class="hover:bg-gray-100 rounded-full">
-          <mat-icon>description</mat-icon> <!-- Use a suitable Material Icon -->
-        </button>
+      <mat-card-footer class="flex flex-col justify-end py-3 h-40">
+        <div class="flex justify-end">
+          <button mat-icon-button class="hover:bg-gray-100 rounded-full">
+            <mat-icon>group</mat-icon>
+          </button>
+          <button mat-icon-button class="hover:bg-gray-100 rounded-full">
+            <mat-icon>description</mat-icon>
+          </button>
+        </div>
       </mat-card-footer>
     </mat-card>
   </ng-container>

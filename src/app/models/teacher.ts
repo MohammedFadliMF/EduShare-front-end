@@ -1,4 +1,4 @@
-import { Course } from "./course";
+import { ClassRoom } from "./classroom";
 
 export interface Teacher {
   username: string;
@@ -6,5 +6,5 @@ export interface Teacher {
   password: string;
 
   role?: string;
-  createdCourses?: Course[];
+  createdCourses?: ClassRoom[];
 }

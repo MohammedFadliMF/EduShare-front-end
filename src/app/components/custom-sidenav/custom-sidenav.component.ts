@@ -4,13 +4,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
-import { Course } from '../../models/course';
+import { ClassRoomDto } from '../../models/ClassRoomDto';
 
 export type MenuItem = {
   icon: string;
   label: string;
   route?: string;
-  courses?: Course[];
+  classrooms?: ClassRoomDto[];
 };
 
 @Component({
@@ -29,61 +29,15 @@ export type MenuItem = {
 })
 export class CustomSidenavComponent {
   sidenavCollapsed = signal(false);
-  
+  navItems:any;
+
   @Input() set collapsed(val: boolean) {
     this.sidenavCollapsed.set(val);
   }
 
-  menuItems = signal<MenuItem[]>([
-    {
-      icon: 'home',
-      label: 'Accueil',
-      route: 'accueil',
-    },
-    {
-      icon: 'today',
-      label: 'Agenda',
-      route: 'agenda',
-    },
-    {
-      icon: 'school',
-      label: 'Inscrit',
-      route: 'inscrit',
-      courses: [
-        {
-          id: 1,
-          title: 'Développement avancés des SI',
-          field: 'Master Ingénierie des Système Inte...',
-          icon: 'D',
-          color: '',
-        },
-        {
-          id: 2,
-          title: 'DWFS avec Javascript',
-          field: 'Master ISI',
-          icon: 'D',
-          color: '',
-        },
-        {
-          id: 3,
-          title: 'Structures de données avancées',
-          field: 'SKASMI',
-          icon: 'S',
-          color: '',
-        },
-      ],
-    },
-    {
-      icon: 'archive',
-      label: 'Cours archivés',
-      route: 'archived-courses',
-    },
-    {
-      icon: 'settings',
-      label: 'Paramètres',
-      route: 'settings',
-    },
-  ]);
+  @Input() set items(val: any) {
+    this.navItems = val;
+  }
 
   profilePicSize = computed(() => (this.sidenavCollapsed() ? '32' : '100'));
 }

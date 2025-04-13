@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Course } from '../../models/course';
+import { ClassRoomDto } from '../../models/ClassRoomDto';
 import { NgFor } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-course-grid',
@@ -13,29 +14,14 @@ import { NgFor } from '@angular/common';
   templateUrl: './course-grid.component.html',
   styleUrl: './course-grid.component.css',
 })
-export class CourseGridComponent {
-  courses: Course[] = [
-    {
-      id: 1,
-      title: 'Développement avancés des SI',
-      field: 'Master Ingénierie des Système Inte...',
-      icon: 'D',
-      color: '',
-    },
-    {
-      id: 2,
-      title: 'DWFS avec Javascript',
-      field: 'Master ISI',
-      icon: 'D',
-      color: '',
-    },
-    {
-      id: 3,
-      title: 'Structures de données avancées',
-      field: 'SKASMI',
-      icon: 'S',
-      color: '',
-    },
-  ];
- 
+export class CourseGridComponent implements OnInit {
+  classrooms!: ClassRoomDto[];
+
+  constructor(private authService: AuthService) {}
+  
+  ngOnInit(): void {
+    this.authService.classrooms$.subscribe((data) => {
+      this.classrooms = data;
+    });
+  }
 }

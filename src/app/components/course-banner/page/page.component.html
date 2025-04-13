@@ -2,8 +2,10 @@
   <mat-toolbar>
     <div class="flex items-center gap-6">
       <button mat-icon-button>
+        <!-- relative to current route ./ -->
         <a
-          routerLink="/content/1/flow-course"
+          routerLink="./"
+          [routerLinkActiveOptions]="{ exact: true }"
           routerLinkActive="selected-tab"
           #rla="routerLinkActive"
           activated="rla.isActive"
@@ -13,7 +15,7 @@
       </button>
       <button mat-icon-button>
         <a
-          routerLink="/content/1/homework"
+          routerLink="t/all"
           routerLinkActive="selected-tab"
           #rla="routerLinkActive"
           activated="rla.isActive"
@@ -22,7 +24,7 @@
         >
       </button>
       <a
-        routerLink="/content/1/personnes"
+        routerLink="p"
         routerLinkActive="selected-tab"
         #rla="routerLinkActive"
         activated="rla.isActive"
