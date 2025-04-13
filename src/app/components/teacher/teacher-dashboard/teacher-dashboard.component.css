@@ -1,0 +1,21 @@
+*{
+  background-color: white;
+}
+
+mat-toolbar {
+  position: relative;
+  z-index: 5;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: none !important; 
+}
+.content {
+  /* padding: 24px; */
+}
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+}
+mat-sidenav-content,
+mat-sidenav {
+  transition: all 500ms ease-in-out;
+}

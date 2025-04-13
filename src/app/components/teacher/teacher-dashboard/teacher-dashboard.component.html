@@ -1,0 +1,36 @@
+<mat-toolbar class="mat-elevation-z3">
+  <button mat-icon-button (click)="collapsed.set(!collapsed())">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="flex items-center">
+    <button mat-icon-button>
+      <mat-icon>school</mat-icon>
+    </button>
+    <span class="text-xl text-gray-600 cursor-pointer">EduShare</span>
+  </div>
+  <span class="flex-1"></span>
+  <div>
+    <button mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>apps</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <img
+        class="rounded-full"
+        src="assets/pic.jpg"
+      />
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+    <app-custom-sidenav [items]="teacherSidebarItems()"[collapsed]="collapsed()"></app-custom-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

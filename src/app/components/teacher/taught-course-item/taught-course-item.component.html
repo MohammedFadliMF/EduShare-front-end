@@ -1,0 +1,49 @@
+<div class="min-h-screen bg-white">
+  <mat-toolbar>
+    <div class="flex items-center gap-6">
+      <button mat-icon-button>
+        <!-- relative to current route ./ -->
+        <a
+          routerLink="./"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="selected-tab"
+          #rla="routerLinkActive"
+          activated="rla.isActive"
+          class="text-xl text-gray-600 cursor-pointer"
+          >Flux</a
+        >
+      </button>
+      <button mat-icon-button>
+        <a
+          routerLink="t/all"
+          routerLinkActive="selected-tab"
+          #rla="routerLinkActive"
+          activated="rla.isActive"
+          class="text-xl text-gray-600 cursor-pointer"
+          >Travaux et devoirs</a
+        >
+      </button>
+      <a
+        routerLink="p"
+        routerLinkActive="selected-tab"
+        #rla="routerLinkActive"
+        activated="rla.isActive"
+        class="text-xl text-gray-600 cursor-pointer"
+        >Personnes</a
+      >
+    </div>
+    <span class="flex-1"></span>
+    <div class="flex items-center gap-6">
+      <button mat-icon-button>
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>apps</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="p-6">
+    <!-- Navigation  -->
+    <router-outlet></router-outlet>
+  </div>
+</div>
