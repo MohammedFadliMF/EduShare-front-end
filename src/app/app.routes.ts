@@ -32,7 +32,6 @@ export const routes: Routes = [
       { path: 'login', component: LoginComponent },
     ],
   },
-
   {
     path: 'u/1',
     component: MainPageComponent,
@@ -47,7 +46,7 @@ export const routes: Routes = [
         component: ContentComponent,
         children: [
           {
-            path: ':courseId',
+            path: ':id',
             component: PageComponent,
             children: [
               { path: '', component: FlowCourseComponent },
@@ -74,7 +73,7 @@ export const routes: Routes = [
         component: ContentComponent,
         children: [
           {
-            path: ':courseId',
+            path: ':id',
             component: TaughtCourseItemComponent,
             children: [
               { path: '', component: FlowCourseComponent },

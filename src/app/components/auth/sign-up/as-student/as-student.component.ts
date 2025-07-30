@@ -36,6 +36,8 @@ import { Student } from '../../../../models/student';
   styleUrl: './as-student.component.css',
 })
 export class AsStudentComponent implements OnInit {
+  selectedRole = 'STUDENT';
+
   formRegister!: FormGroup;
   student!: Student;
   errorMessage!: string;
@@ -49,9 +51,16 @@ export class AsStudentComponent implements OnInit {
   ngOnInit(): void {
     this.formRegister = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['',[Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['',[Validators.required, Validators.minLength(8),   Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$')]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$'),
+        ],
+      ],
     });
   }
   registerStudentHandler() {
@@ -79,5 +88,14 @@ export class AsStudentComponent implements OnInit {
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
+  }
+
+  signupWithGoogle() {
+    if (!this.selectedRole) {
+      alert("Veuillez sélectionner votre rôle d'abord");
+      return;
+    }
+
+    window.location.href = `http://localhost:8085/api/auth/oauth2/signup/google?role=${this.selectedRole}`;
   }
 }

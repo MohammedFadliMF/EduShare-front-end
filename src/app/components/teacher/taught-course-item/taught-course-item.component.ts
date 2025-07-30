@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,7 +6,16 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  RouterOutlet,
+  RouterLink,
+  RouterLinkActive,
+  ActivatedRoute,
+} from '@angular/router';
+import { TeacherService } from '../../../services/teacher.service';
+import { ClassroomService } from '../../../services/classroom.service';
+import { Observable, switchMap } from 'rxjs';
+import { ClassRoom } from '../../../models/classroom';
 
 @Component({
   selector: 'app-taught-course-item',
@@ -26,23 +35,22 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './taught-course-item.component.html',
   styleUrl: './taught-course-item.component.css',
 })
-export class TaughtCourseItemComponent {
-  searchQuery: string = '';
-  documents: Document[] = [
-    { id: '1', title: 'Course Material 1', fileName: 'material1.pdf' },
-    { id: '2', title: 'Course Material 2', fileName: 'material2.pdf' },
-    { id: '3', title: 'Course Material 3', fileName: 'material3.pdf' },
-    { id: '4', title: 'Course Material 4', fileName: 'material4.pdf' },
-    { id: '5', title: 'Course Material 5', fileName: 'material5.pdf' },
-    { id: '6', title: 'Course Material 6', fileName: 'material6.pdf' },
-    { id: '7', title: 'Course Material 7', fileName: 'material7.pdf' },
-    { id: '8', title: 'Course Material 8', fileName: 'material8.pdf' },
-  ];
+export class TaughtCourseItemComponent implements OnInit {
+  classroom$!: Observable<ClassRoom | null>;
 
-  get filteredDocuments(): Document[] {
-    return this.documents.filter((doc) =>
-      doc.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
+  constructor(
+    private route: ActivatedRoute,
+    private classroomService: ClassroomService
+  ) {
+     this.classroom$ = this.classroomService.getCurrentClassroom();
+  }
+
+  ngOnInit() {
+    this.route.params
+      .pipe(
+        switchMap((params) => this.classroomService.getClassroom(params['id']))
+      )
+      .subscribe();
   }
 }
 interface Document {
@@ -50,4 +58,3 @@ interface Document {
   title: string;
   fileName: string;
 }
-

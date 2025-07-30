@@ -1,126 +1,182 @@
-<div class="space-y-6">
-  <mat-card class="bg-white ">
-    <mat-card-content class="p-0">
+<!-- Announce -->
+<mat-card
+  appearance="outlined"
+  class="mb-6 p-4 shadow-sm border rounded-lg hover:cursor-pointer"
+>
+  <div class="flex items-center gap-3">
+    <div
+      class="h-10 w-10 rounded-full overflow-hidden flex items-center justify-center bg-neutral-300"
+    >
+      <img
+        src="/placeholder.svg?height=40&width=40"
+        alt="User"
+        class="h-10 w-10 object-cover"
+      />
+    </div>
+    <span class="flex-1 px-3 py-2 border-none text-sm text-gray-400 hover:text-gray-800">
+      Annoncez quelque chose à votre classe
+    </span>
+  </div>
+</mat-card>
+<!-- Announce -->
+ 
+<div *ngIf="courses$ | async as coursess; else loading" class="w-full">
+  @if (coursess && coursess.length) { @for (course of coursess; track
+  course.courseId) {
+  <mat-card
+    appearance="outlined"
+    class="min-w-full border rounded-lg  overflow-hidden space-y-3"
+  >
+    <mat-card-content class="space-y-3">
       <!-- Header Section -->
-      <div class="p-4 flex items-center justify-between border-b">
-        <div class="flex items-center gap-3">
-          <mat-icon class="h-10 w-10 bg-emerald-100 text-emerald-600 uppercase">
-            r
-          </mat-icon>
+      <div class="flex items-start justify-between">
+        <div class="flex gap-3">
+          <div
+            class="h-10 w-10 bg-neutral-300 rounded-full overflow-hidden flex items-center justify-center"
+          >
+            <img
+              src="assets/pic.jpg"
+              alt="Avatar"
+              class="h-10 w-10 object-cover"
+            />
+          </div>
           <div>
-            <h3 class="text-gray-900">rachid dehbi</h3>
-            <p class="text-sm text-gray-500">25 oct.</p>
+            <h3 class="font-medium text-sm">mohammed fadli</h3>
+            <p class="text-xs text-muted-foreground">
+              9 avr. (Modification : Hier)
+            </p>
           </div>
         </div>
+
+        <button
+          mat-icon-button
+          matTooltip="Plus d'options"
+          [matMenuTriggerFor]="menu"
+          class="h-9 w-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition"
+        >
+          <mat-icon class="h-5 w-5">more_vert</mat-icon>
+        </button>
+
         <mat-menu #menu="matMenu" class="w-48">
           <button mat-menu-item>Modifier</button>
           <button mat-menu-item class="text-red-600">Supprimer</button>
         </mat-menu>
-        <button
-          mat-icon-button
-          aria-label="Plus d'options"
-          [matMenuTriggerFor]="menu"
-          class="text-gray-500 hover:text-gray-900"
+      </div>
+      <p class="text-sm">chapitre 1ccc</p>
+
+      <!-- Course Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Google Docs -->
+        <a
+          routerLink="#"
+          class="flex items-center border rounded-lg overflow-hidden"
         >
-          <mat-icon>more_vert</mat-icon>
-        </button>
-      </div>
-  
-      <!-- Content Section -->
-      <div class="p-4">
-        <h4 class="font-medium text-gray-900 mb-4">TP PL/SQL avancé</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <ng-container *ngFor="let doc of documents; let index = index">
-            <app-document-card [document]="doc"></app-document-card>
-          </ng-container>
-        </div>
-      </div>
-  
-      <!-- Comment Input -->
-      <div
-        class="flex items-center gap-3 px-4 py-3 bg-white rounded-lg border mt-4"
-      >
-        <mat-icon class="h-8 w-8 shrink-0">account_circle</mat-icon>
-  
-        <div class="flex-1 flex items-center">
-          <input
-            type="text"
-            placeholder="Ajouter un commentaire au cours..."
-            class="w-full bg-transparent text-sm text-gray-600 placeholder:text-gray-400 focus:outline-none"
-          />
-        </div>
-  
-        <button
-          mat-icon-button
-          color="primary"
-          class="text-gray-400 hover:text-gray-600 shrink-0"
-          aria-label="Envoyer le commentaire"
-        >
-          <mat-icon>send</mat-icon>
-        </button>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="bg-white ">
-    <mat-card-content class="p-0">
-      <!-- Header Section -->
-      <div class="p-4 flex items-center justify-between border-b">
-        <div class="flex items-center gap-3">
-          <mat-icon class="h-10 w-10 bg-emerald-100 text-emerald-600 uppercase">
-            r
-          </mat-icon>
-          <div>
-            <h3 class="text-gray-900">rachid dehbi</h3>
-            <p class="text-sm text-gray-500">25 oct.</p>
+          <div class="bg-teal-500 p-2 flex items-center justify-center h-full">
+            <img
+              src="/placeholder.svg?height=40&width=40"
+              alt="Google Docs icon"
+              width="40"
+              height="40"
+              class="h-10 w-10"
+            />
           </div>
-        </div>
-        <mat-menu #menu="matMenu" class="w-48">
-          <button mat-menu-item>Modifier</button>
-          <button mat-menu-item class="text-red-600">Supprimer</button>
-        </mat-menu>
-        <button
-          mat-icon-button
-          aria-label="Plus d'options"
-          [matMenuTriggerFor]="menu"
-          class="text-gray-500 hover:text-gray-900"
+          <div class="p-3 flex-1">
+            <h4 class="text-sm font-medium">Document sans titre</h4>
+            <p class="text-xs text-muted-foreground">Google Docs</p>
+          </div>
+        </a>
+
+        <!-- PDF -->
+        <a
+          routerLink="#"
+          class="flex items-center border rounded-lg overflow-hidden"
         >
-          <mat-icon>more_vert</mat-icon>
-        </button>
-      </div>
-  
-      <!-- Content Section -->
-      <div class="p-4">
-        <h4 class="font-medium text-gray-900 mb-4">TP PL/SQL avancé</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <ng-container *ngFor="let doc of documents; let index = index">
-            <app-document-card [document]="doc"></app-document-card>
-          </ng-container>
-        </div>
-      </div>
-  
-      <!-- Comment Input -->
-      <div
-        class="flex items-center gap-3 px-4 py-3 bg-white rounded-lg border mt-4"
-      >
-        <mat-icon class="h-8 w-8 shrink-0">account_circle</mat-icon>
-  
-        <div class="flex-1 flex items-center">
-          <input
-            type="text"
-            placeholder="Ajouter un commentaire au cours..."
-            class="w-full bg-transparent text-sm text-gray-600 placeholder:text-gray-400 focus:outline-none"
-          />
-        </div>
-  
-        <button
-          mat-icon-button
-          color="primary"
-          class="text-gray-400 hover:text-gray-600 shrink-0"
-          aria-label="Envoyer le commentaire"
+          <div class="bg-gray-100 p-2 flex items-center justify-center h-full">
+            <img
+              src="/placeholder.svg?height=40&width=40"
+              alt="PDF icon"
+              width="40"
+              height="40"
+              class="h-10 w-10"
+            />
+          </div>
+          <div class="p-3 flex-1">
+            <h4 class="text-sm font-medium">Chapitre 1.pdf</h4>
+            <p class="text-xs text-muted-foreground">PDF</p>
+          </div>
+        </a>
+
+        <!-- Text file -->
+        <a
+          routerLink="#"
+          class="flex items-center border rounded-lg overflow-hidden"
         >
-          <mat-icon>send</mat-icon>
-        </button>
+          <div class="bg-blue-500 p-2 flex items-center justify-center h-full">
+            <img
+              src="/placeholder.svg?height=40&width=40"
+              alt="Text file icon"
+              width="40"
+              height="40"
+              class="h-10 w-10"
+            />
+          </div>
+          <div class="p-3 flex-1">
+            <h4 class="text-sm font-medium">file.txt</h4>
+            <p class="text-xs text-muted-foreground">Texte</p>
+          </div>
+        </a>
+
+        <!-- PowerPoint -->
+        <a
+          routerLink="#"
+          class="flex items-center border rounded-lg overflow-hidden"
+        >
+          <div
+            class="bg-purple-600 p-2 flex items-center justify-center h-full"
+          >
+            <img
+              src="/placeholder.svg?height=40&width=40"
+              alt="PowerPoint icon"
+              width="40"
+              height="40"
+              class="h-10 w-10"
+            />
+          </div>
+          <div class="p-3 flex-1">
+            <h4 class="text-sm font-medium">présentation.pptx</h4>
+            <p class="text-xs text-muted-foreground">Microsoft PowerPoint</p>
+          </div>
+        </a>
       </div>
+
+      <!-- <hr /> -->
+
     </mat-card-content>
+    <!-- Comment Input -->
+    <mat-card-footer class="p-4 border-t flex items-center gap-3">
+      <div
+        class="h-8 w-8 bg-neutral-300 rounded-full overflow-hidden flex items-center justify-center"
+      >
+        <img  src="assets/pic.jpg" alt="Avatar" class="h-8 w-8 object-cover" />
+      </div>
+      <input
+        type="text"
+        placeholder="Ajouter un commentaire au cours..."
+        class="flex-1 text-sm h-9 px-3 py-2 border rounded-2xl focus:outline-none focus:ring-1 focus:ring-gray-200"
+      />
+      <button
+        type="button"
+        class="h-9 w-9 flex items-center justify-center transition"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-card-footer>
+    <!-- Comment Input -->
   </mat-card>
+  } }
 </div>
+<ng-template #loading>
+  <div class="flex justify-center py-8">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+</ng-template>

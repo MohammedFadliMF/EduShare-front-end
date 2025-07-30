@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { DocumentCardComponent } from "../document-card/document-card.component";
+import { Course } from '../../../models/course';
+import { Observable, of, switchMap } from 'rxjs';
+import { ClassroomService } from '../../../services/classroom.service';
+import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'app-course-chapter-list',
   standalone: true,
@@ -16,43 +23,29 @@ import { DocumentCardComponent } from "../document-card/document-card.component"
     MatIconModule,
     MatInputModule,
     MatMenuModule,
-    DocumentCardComponent
-],
+    MatProgressSpinnerModule,
+    MatTooltipModule,
+    AsyncPipe,
+  ],
   templateUrl: './course-chapter-list.component.html',
   styleUrl: './course-chapter-list.component.css',
 })
-export class CourseChapterListComponent {
-  documents = [
-    {
-      title: 'TPcurseur.doc',
-      type: 'Word',
-      previewUrl: 'assets/pic.jpg',
-    },
-    {
-      title: 'TPTrigger.doc',
-      type: 'Word',
-      previewUrl: 'assets/pic.jpg',
-    },
-    {
-      title: 'TPPackage.doc',
-      type: 'Word',
-      previewUrl: 'assets/pic.jpg',
-    },
-    {
-      title: 'TP_structure_controle.doc',
-      type: 'Word',
-      previewUrl: 'assets/pic.jpg',
-      isLink: true,
-    },
-    {
-      title: 'TP_Curseur.doc',
-      type: 'Word',
-      previewUrl: 'assets/pic.jpg',
-    },
-    {
-      title: 'interagir_oracle.doc',
-      type: 'Word',
-      previewUrl: 'assets/pic.jpg',
-    },
-  ];
+export class CourseChapterListComponent implements OnInit {
+  courses$!: Observable<Course[] | null>;
+  constructor(private classroomService: ClassroomService) {}
+
+  ngOnInit(): void {
+    this.courses$ = this.classroomService.getCurrentClassroom().pipe(
+      switchMap((classroom) => {
+        if (!classroom) return of([]);
+        return this.classroomService.getCourses(classroom.classroomId);
+      })
+    );
+  //  this.courses$.subscribe((courses) => {
+  //     this.courses = courses;     
+  //   });
+
+  }
+
+ 
 }

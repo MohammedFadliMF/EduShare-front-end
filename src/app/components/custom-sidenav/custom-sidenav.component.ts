@@ -20,8 +20,6 @@ export type MenuItem = {
     CommonModule,
     MatListModule,
     MatIconModule,
-    RouterLink,
-    RouterLinkActive,
     MenuItemComponent,
   ],
   templateUrl: './custom-sidenav.component.html',

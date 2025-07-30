@@ -36,35 +36,49 @@ import { Teacher } from '../../../../models/teacher';
   styleUrl: './as-professor.component.css',
 })
 export class AsProfessorComponent implements OnInit {
+  selectedRole = 'TEACHER';
+
   showPassword: boolean = false;
   selectedCountry: string = '';
 
   formRegister!: FormGroup;
   teacher!: Teacher;
-  errorMessage!:string;
+  errorMessage!: string;
 
   // Without 'private' or 'public', Angular doesn't know how to store
   // the fb and authService instances for use in the class, hence the error.
-  constructor(private fb: FormBuilder, private authService: AuthService,private router:Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.formRegister = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['',[Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['',[Validators.required, Validators.minLength(8),   Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$')]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$'),
+        ],
+      ],
     });
   }
 
   registerHandler() {
-    let username =this.formRegister.value.firstName + this.formRegister.value.lastName;
+    let username =
+      this.formRegister.value.firstName + this.formRegister.value.lastName;
     let email = this.formRegister.value.email;
     let pwd = this.formRegister.value.password;
 
     this.teacher = {
-      username:username,
-      email:email ,
-      password: pwd
+      username: username,
+      email: email,
+      password: pwd,
     };
     this.authService.registerTeacher(this.teacher).subscribe({
       next: (data) => {
@@ -72,7 +86,7 @@ export class AsProfessorComponent implements OnInit {
         this.router.navigateByUrl('/u/2');
       },
       error: (error) => {
-        this.errorMessage=error.message;
+        this.errorMessage = error.message;
       },
     });
   }
@@ -88,5 +102,14 @@ export class AsProfessorComponent implements OnInit {
   }
   setShowPassword() {
     console.log('setShowPassword');
+  }
+
+  signupWithGoogle() {
+    if (!this.selectedRole) {
+      alert("Veuillez sélectionner votre rôle d'abord");
+      return;
+    }
+
+    window.location.href = `http://localhost:8085/api/auth/oauth2/signup/google?role=${this.selectedRole}`;
   }
 }

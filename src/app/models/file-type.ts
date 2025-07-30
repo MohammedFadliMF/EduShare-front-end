@@ -4,7 +4,4 @@ export enum FileType {
   PPT,
   PPTX,
   TXT,
-  MP4,
-  ZIP,
-  RAR,
 }
